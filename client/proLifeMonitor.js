@@ -36,6 +36,12 @@ angular.module('ProLifeMonitor').config(function ($urlRouterProvider, $stateProv
       templateUrl: 'client/views/state1.html'
     });
 
+  $stateProvider
+    .state('toDo', {
+      url: '/todo',
+      templateUrl: 'client/views/todo-app.html'
+    });
+
   $urlRouterProvider.otherwise("/");
 });
 
