@@ -1,0 +1,47 @@
+
+<head>
+  <title>Todo List</title>
+  <base href="/">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,900,500" type="text/css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=EB+Garamond' type='text/css'>
+
+</head>
+
+<body ng-app="ProLifeMonitor" ng-strict-di="" class="body animateall">
+  
+  <main-nav></main-nav>
+
+  <div class="container"
+     ng-controller="TodosListCtrl as vm">
+
+    <header>
+      <h1>Todo List ( {{ incompleteCount() }} )</h1>
+      <h2>Welcome {{ $auth.currentUser.username }}</h2>
+      <label class="hide-completed">
+        <input type="checkbox" ng-model="hideCompleted"/>
+        Hide Completed Tasks
+      </label>
+
+      <login-buttons></login-buttons>
+
+      <!-- add a form below the h1 -->
+      <form class="new-task"
+          ng-submit="addTask(newTask); newTask='';"
+          ng-show="$auth.currentUser">
+        <input ng-model="newTask" type="text"
+             name="text" placeholder="Type to add new tasks" />
+      </form>
+    
+    </header>
+ 
+    <todos-list></todos-list>
+
+    <div ui-view=""></div>
+
+  </div>
+
+</body>
