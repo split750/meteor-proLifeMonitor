@@ -51,3 +51,14 @@ Meteor.methods({
     Tasks.update(taskId, { $set: { private: setToPrivate } });
   }
 });
+
+
+Accounts.onCreateUser((options, user) => {
+  
+  
+  user.registerDate = new Date();
+
+  console.log(user);
+  // Don't forget to return the new user object at the end!
+  return user;
+});

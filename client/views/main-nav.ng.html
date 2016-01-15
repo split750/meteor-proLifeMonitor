@@ -1,18 +1,18 @@
 <nav class="main-menu" ng-controller="MainNavCtrl">
 	<div class="max-width">
 		<div class="col-sm-3 col-xs-12 brand">
-			<a class="" href="/">Digital <span>Card</span></a>
+			<a class="" ui-sref="root.home">Digital <span>Card</span></a>
 		</div>
 		<div class="col-sm-4 col-xs-12 navigation">
-			<a class="" ng-show="isLoggedIn" href="{{$auth.currentUser.username}}/edit">Edit card</a>
+			<a class="" ng-show="isLoggedIn" ui-sref-active="active" ui-sref="root.{{$auth.currentUser._id}}/edit">Edit card</a>
 		</div>
 		<div class="col-sm-5 col-xs-12 right">
 			<div class="" ng-hide="isLoggedIn">
-				<a class="menu-button primary" ng-href="/login" ng-hide="isLoggedIn">Login</a>
-				<a class="menu-button secondary" ng-href="/signup">Register</a>
+				<a class="menu-button primary" ui-sref="root.login" ng-hide="isLoggedIn">Login</a>
+				<a class="menu-button secondary" ui-sref="root.register">Register</a>
 			</div>
 			<div ng-show="isLoggedIn">
-				<p class="">Signed in as <a href="/{{$auth.currentUser.username}}">{{$auth.currentUser.username}}</a></p>
+				<p class="">Signed in as <a href="/{{$auth.currentUser.username}}">{{currentUser2.emails[0].address}}</a></p>
 				<a class="menu-button warning" href="" ng-click="logout()">Logout</a>
 				<!--<p class="navbar-right navbar-text" ng-hide="authenticated">Signed in as {{current_user}}</p>-->
 			</div>

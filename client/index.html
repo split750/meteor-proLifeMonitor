@@ -11,10 +11,16 @@
 
 </head>
 
-<body ng-app="ProLifeMonitor" ng-strict-di="" class="body animateall">
+<body ng-app="ProLifeMonitor" class="body animateall">
   
-  <main-nav></main-nav>
+  <header>
+    <div ui-view="header"></div>
+  </header>
 
-  <div ui-view=""></div>
+  <div ui-view="container"></div>
+
+  <footer>
+    <div ui-view="footer"></div>
+  </footer>
  
 </body>

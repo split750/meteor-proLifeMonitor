@@ -2,6 +2,7 @@
 /*                  MAIN NAV                     */
 /*-----------------------------------------------*/
 
+/*
 angular.module('ProLifeMonitor').directive('mainNav', mainNav);
 
 function mainNav() {
@@ -11,3 +12,4 @@ function mainNav() {
       controllerAs: 'MainNavCtrl as mainNav'
     }
 };
+*/

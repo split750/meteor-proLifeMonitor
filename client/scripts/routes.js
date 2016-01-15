@@ -8,43 +8,79 @@ function config($urlRouterProvider, $stateProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('home', {
+    .state('root',{
+      url: '',
+      abstract: true,
+      views: {
+        'header': {
+          templateUrl: 'client/views/main-nav.ng.html',
+          controller: 'MainNavCtrl'
+        },
+        'footer':{
+          templateUrl: 'client/views/footer.ng.html'
+        }
+      }
+    })
+    .state('root.home', {
       url: '/',
-      templateUrl: 'client/views/home.html'
+      views: {
+        "container@" : { templateUrl: 'client/views/home.ng.html' }
+      }
     })
-    .state('state1', {
-      url: '/state1',
-      templateUrl: 'client/views/state1.html'
-    })
-    .state('toDo', {
+    .state('root.toDo', {
       url: '/todo',
-      templateUrl: 'client/views/todo-app.html',
-      controller: 'TodosListCtrl as todos',
+      views: {
+        "container@" : {
+          templateUrl: 'client/views/todo-app.html',
+          controller: 'TodosListCtrl as todos'
+        }
+      }
     })
-    .state('login', {
+    .state('root.login', {
       url: '/login',
-      template: '<login></login>'
+      views: {
+        "container@" : { 
+          templateUrl: 'client/views/auth/login.ng.html',
+          controller: 'LoginCtrl as login',
+        }
+      }
     })
-    .state('admin', {
+    .state('root.register', {
+      url: '/register',
+      views: {
+        "container@" : { 
+          templateUrl: 'client/views/auth/register.ng.html',
+          controller: 'RegisterCtrl as register',
+        }
+      }
+    })
+    .state('root.admin', {
       url: '/admin',
-      templateUrl: 'client/views/admin.html',
-      controller: 'AdminController as admin',
-      resolve: {
-        "currentUser": ["$meteor", function($meteor){
-          return $meteor.requireValidUser(function(user) {
-            if (user.username==='test123') {
-              return true;
-            }
-            return 'UNAUTHORIZED';
-          });
-        }]
+      views: {
+        "container@" : { 
+          templateUrl: 'client/views/admin.html',
+          controller: 'AdminController as admin',
+          resolve: {
+            "currentUser": ["$meteor", function($meteor){
+              return $meteor.requireValidUser(function(user) {
+                if (user.username==='test123') {
+                  return true;
+                }
+                return 'UNAUTHORIZED';
+              });
+            }]
+          }
+        }
       }
     });
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise(function ($state, $location) {
+    $state = "root.home";
+    $location.url("/");
+  });
 };
 
-
+/*
 angular.module('ProLifeMonitor').run(run);
 
 function run($rootScope, $state) {
@@ -66,3 +102,4 @@ function run($rootScope, $state) {
     }
   });
 };
+*/

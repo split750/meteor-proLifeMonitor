@@ -20,3 +20,4 @@ dotansimha:accounts-ui-angular
 angular-meteor-auth
 angularui:angular-ui-router
 twbs:bootstrap
+accounts-base

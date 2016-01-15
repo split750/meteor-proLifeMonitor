@@ -15,4 +15,8 @@ function MainNavCtrl ($scope, $meteor, $reactive) {
     $scope.logout = () => {
       Accounts.logout();
     };
+
+    $scope.activeUserCount = function () {
+      return Meteor.users.find().count();
+    };
 };
