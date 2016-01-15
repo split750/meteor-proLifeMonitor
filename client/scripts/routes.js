@@ -54,6 +54,15 @@ function config($urlRouterProvider, $stateProvider, $locationProvider) {
         }
       }
     })
+    .state('root.editProfile', {
+      url: '/editProfile',
+      views: {
+        "container@" : { 
+          templateUrl: 'client/views/profile/edit.ng.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      }
+    })
     .state('root.admin', {
       url: '/admin',
       views: {
