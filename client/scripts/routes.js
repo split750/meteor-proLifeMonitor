@@ -84,7 +84,7 @@ function config($urlRouterProvider, $stateProvider, $locationProvider) {
     });
 
   $urlRouterProvider.otherwise(function ($state, $location) {
-    $state = "root.home";
+    $state.go('root.home');
     $location.url("/");
   });
 };
